@@ -5,5 +5,5 @@
 
 
 void outputMenu();
-void startGame(Game game);
+void startGame(Game game, Character character);
 void createCharecter(Game game, Character character);

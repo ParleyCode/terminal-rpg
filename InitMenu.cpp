@@ -22,14 +22,15 @@ void outputMenu(){
         if(!(std::cin) || choise > 1 || choise < 4){
             std::cin.clear();std::cin.ignore(10000, '\n');
             std::cout << "\nIncorrect input! "
-            << "\nPlease enter what you want to do: ";
+            << "\nPlease enter what you want to do: " << std::flush;
 
         }
     }
 
     switch(choise){
     case 1:
-        startGame(game);
+        //startGame(game, character);
+        firstTimeInTown(character);
         break;
     case 2:  
         break;
@@ -64,7 +65,7 @@ void startGame(Game game, Character character){
         }
     }
 }
-    chooseScene();
+    chooseScene(character);
 
 }
 

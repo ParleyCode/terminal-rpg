@@ -1,12 +1,13 @@
 #pragma once
-#include <iostream>
 #include "Story.h"
+#include <iostream>
 
 class Character{
     Story story;
 
     std::string name;
     std::string race;
+
 
 public:
     //Setters

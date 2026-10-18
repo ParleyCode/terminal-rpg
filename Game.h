@@ -27,3 +27,5 @@ class Game{
 
 };
 
+void saveGame();
+void loadGame();
