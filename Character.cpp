@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "Story.h"
 
 void Character::setCharacterName(std::string newName){
     name = newName;
@@ -14,4 +15,8 @@ std::string Character::getCharacterName(){
 
 std::string Character::getCharacterRace(){
     return race;
+}
+
+Story Character::getCharactersStory(){
+    return story;
 }

@@ -1,7 +1,9 @@
-#include "InitMenu.h"
+#include "Game.h"
 
 int main(){
+    Game game;
+    Character character;
 
-    outputMenu();
+    outputMenu(game, character);
     return 0;
 }

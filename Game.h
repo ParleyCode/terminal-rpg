@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
 #include "Character.h"
+#include "Story.h"
 #include <vector>
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
 
 class Game{
     bool isAnyCharecterCreated = false;
-    int sceneNumber = 0;
     std::vector<Character> charecters;
 
     public:
@@ -17,15 +19,11 @@ class Game{
         return isAnyCharecterCreated;
     }
 
-    void setSceneNumber(int number){
-        sceneNumber = number;
-    }
-
-    int getSceneNumber(){
-        return sceneNumber;
-    }
-
 };
 
 void saveGame();
 void loadGame();
+void outputMenu(Game& game, Character& character);
+void startGame(Game& game, Character& character);
+Character& chooseCharacter(Game& game);
+void createCharecter(Game& game);

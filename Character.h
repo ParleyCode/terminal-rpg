@@ -7,8 +7,7 @@ class Character{
 
     std::string name;
     std::string race;
-
-
+    
 public:
     //Setters
     void setCharacterName(std::string newName);
@@ -17,5 +16,6 @@ public:
     //Getters
     std::string getCharacterName();
     std::string getCharacterRace();
+    Story getCharactersStory();
 };
 

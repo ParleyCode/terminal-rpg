@@ -1,10 +1,12 @@
 #pragma once
+#include <functional>
+#include <iostream>
 
 class Character;
 class Game;
 
 class Story{
-    int currentScene = 0;
+    int currentScene = 1;
 
 public:
     //Setters
@@ -16,7 +18,8 @@ public:
 };
 
 void clearScreen();
-void firstTimeInTown(Character character);
-void inTheHotelPart1(Character character);
-void chooseScene(Character character);
+void firstTimeInTown(Character& character, Game& game);
+void inTheHotelPart1(Character& character, Game& game);
+void chooseScene(Character& character, Game& game);
+void nextScene(Character& character, Game& game, std::function<void(Character&, Game&)> scene);
 void waitForEnter();

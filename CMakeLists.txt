@@ -10,7 +10,6 @@ add_executable(rpg
     main.cpp
     Game.cpp
     Character.cpp
-    InitMenu.cpp
     Story.cpp
 )
 

@@ -4,19 +4,20 @@
 #include <iostream>
 #include <ostream>
 #include <string>
+#include <functional>
 
 
 
-void chooseScene(Character character){
-    Game story;
-    switch(story.getSceneNumber()){
+void chooseScene(Character& character, Game& game){
+    switch(character.getCharactersStory().getCurrentScene()){
         case 1:
-        firstTimeInTown(character);
+        firstTimeInTown(character, game);
+        
         break;
     }
 
 }
-void firstTimeInTown(Character character){
+void firstTimeInTown(Character& character, Game& game){
     std::cin.clear();std::cin.ignore(10000,'\n');
     clearScreen();
     std::cout << "===============GAME INFO===============\n\nTo continue dialogs you can press ENTER.(Try it)";
@@ -67,10 +68,10 @@ void firstTimeInTown(Character character){
     std::cout << "After thinking about your tomorrow`s plan your eyes began to close, and soon you felt asleap.";
     waitForEnter();
 
-    inTheHotelPart1(character);
+    nextScene(character, game, inTheHotelPart1);
 }
 
-void inTheHotelPart1(Character character){
+void inTheHotelPart1(Character& character, Game& game){
     clearScreen();
     std::cin.clear();std::cin.ignore(10000, '\n');
     std::cout << "\n\n\n\n\t\t\t\t|-----------|\n"
@@ -161,3 +162,25 @@ void waitForEnter(){
     std::cin.get();
 }
 
+void nextScene(Character& character, Game& game, std::function<void(Character&, Game&)> scene){
+    int choise = 0;
+    bool choiseSucces = false;
+    clearScreen();
+    std::cout << "Please chose what you want to do:\n1. Continue story\n2. Save and quit to the menu\n";
+    while(!choiseSucces){
+        std::cin >> choise;
+        if(choise == 1){
+            scene(character, game);
+            choiseSucces = true;
+        }
+        else if(choise == 2){
+            choiseSucces = true;
+            //Skip
+        }
+        else{
+            std::cout << "Wrong input!";
+            std::cin.clear();std::cin.ignore(10000,'\n');
+        }
+    }
+    
+}
