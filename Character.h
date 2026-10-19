@@ -12,10 +12,12 @@ public:
     //Setters
     void setCharacterName(std::string newName);
     void setCharacterRace(std::string newRace);
+    void setCharacterStory(Story newStory);
 
     //Getters
-    std::string getCharacterName();
-    std::string getCharacterRace();
-    Story getCharactersStory();
+    std::string getCharacterName() const;
+    std::string getCharacterRace() const;
+    const Story& getCharactersStory()const;
+    Story& getCharactersStory();
 };
 

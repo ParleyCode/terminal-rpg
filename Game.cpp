@@ -1,14 +1,25 @@
 #include "Game.h"
 #include "Character.h"
 #include "Story.h"
+#include <fstream>
+#include <vector>
 
 /*
 
     Function to load class Game from json and also vector of the class Characters with their own class Story
 
 */
-void loadGame(){
+std::vector<Character> loadGame(){
+    std::ifstream file("saves.json");
 
+        if (!file.is_open()) {
+        return {};
+        }
+
+        json j;
+        file >> j;
+
+        return j.get<std::vector<Character>>();
 }
 
 /*
@@ -16,17 +27,30 @@ void loadGame(){
     Function to save class Game, vector of class Character to json format file
 
 */
-void saveGame(){
+void saveGame(const std::vector<Character>& characters){
+    std::ofstream file("saves.json");
 
+    if(!file.is_open()){
+        std::cout << "Could not open the file!";
+        return;
+    }
+
+    json j = characters;
+    file << j.dump(4);
 }
 
+void Game::loadCharacters(){
+    charecters = loadGame();
+}
+void Game::saveCharacters(){
+    saveGame(charecters);
+}
 /*
 
     Function to check if any character was created, if no ask to create a new one, if yes show list to choose the slot
 
 */
 void startGame(Game& game, Character& character){
-    Character chosenCharacter;
 
     int choise = 0;
     std::string createCharecterChoise;
@@ -54,7 +78,7 @@ void startGame(Game& game, Character& character){
     }
 }
     else{
-        chosenCharacter = chooseCharacter(game);
+            Character& chosenCharacter = chooseCharacter(game);
         chooseScene(chosenCharacter, game);
     }
 }
@@ -69,7 +93,7 @@ void createCharecter(Game& game){
     std::string name;
     std::string race;
     bool raceSucces = false;
-
+    std::cin.clear();std::cin.ignore(10000, '\n');
     std::cout << "Please enter name for your character: ";
     std::getline(std::cin, name);
 
@@ -89,16 +113,17 @@ void createCharecter(Game& game){
     character.setCharacterRace(race);
 
     game.getCharacters().push_back(character);
+    saveGame(game.getCharacters());
 }
 
 Character& chooseCharacter(Game& game){
     int choise = 0;
     int counter = 0;
 
-    std::cout << "Please choose your character";
+    std::cout << "Please choose your character:\n";
     for(auto& chr : game.getCharacters()){
         ++counter;
-        std::cout << counter <<". \t"<<chr.getCharacterName()<<"\t"<<chr.getCharacterRace();
+        std::cout << counter <<". \t"<<chr.getCharacterName()<<"\t"<<chr.getCharacterRace() << "\n";
     }
     std::cout << "Please selectd character: \n";
     while(!(std::cin >> choise) || choise < 0 || choise > game.getCharacters().size()){
@@ -114,6 +139,7 @@ Character& chooseCharacter(Game& game){
 void outputMenu(Game& game, Character& character){
     int choise = 0;
     while(true){
+    clearScreen();
     std::cout << "------TERMINAL RPG------\n"
     <<"1. Start new game \n"
     <<"2. Continue \n"
@@ -142,4 +168,29 @@ void outputMenu(Game& game, Character& character){
 
     }
     }
+}
+
+void to_json(json& j, const Story& story){
+    j = json{
+        {"sceneNumber", story.getCurrentScene()}
+    };
+
+}
+
+void from_json(const json& j, Story& story){
+    story.setCurrentScene(j.at("sceneNumber").get<int>());
+}
+
+void to_json(json& j, const Character& character){
+    j = json{
+        {"name", character.getCharacterName()},
+        {"race", character.getCharacterRace()},
+        {"story", character.getCharactersStory()}
+    };
+}
+
+void from_json(const json& j, Character& character){
+    character.setCharacterName(j.at("name").get<std::string>());
+    character.setCharacterRace(j.at("race").get<std::string>());
+    character.setCharacterStory(j.at("story").get<Story>());
 }

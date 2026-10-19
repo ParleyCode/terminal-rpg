@@ -14,7 +14,7 @@ public:
 
     //Getters
     
-    int getCurrentScene();
+    int getCurrentScene()const;
 };
 
 void clearScreen();

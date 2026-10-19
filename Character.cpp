@@ -9,14 +9,22 @@ void Character::setCharacterRace(std::string newRace){
     race = newRace;
 }
 
-std::string Character::getCharacterName(){
+void Character::setCharacterStory(Story newStory){
+    story = newStory;
+}
+
+std::string Character::getCharacterName() const{
     return name;
 }
 
-std::string Character::getCharacterRace(){
+std::string Character::getCharacterRace()const{
     return race;
 }
 
-Story Character::getCharactersStory(){
+Story& Character::getCharactersStory(){
+    return story;
+}
+
+const Story& Character::getCharactersStory()const{
     return story;
 }

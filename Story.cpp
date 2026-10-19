@@ -12,12 +12,15 @@ void chooseScene(Character& character, Game& game){
     switch(character.getCharactersStory().getCurrentScene()){
         case 1:
         firstTimeInTown(character, game);
+        case 2:
+        inTheHotelPart1(character, game);
         
         break;
     }
 
 }
 void firstTimeInTown(Character& character, Game& game){
+    int storyNumber = 2;
     std::cin.clear();std::cin.ignore(10000,'\n');
     clearScreen();
     std::cout << "===============GAME INFO===============\n\nTo continue dialogs you can press ENTER.(Try it)";
@@ -67,7 +70,6 @@ void firstTimeInTown(Character& character, Game& game){
     waitForEnter();
     std::cout << "After thinking about your tomorrow`s plan your eyes began to close, and soon you felt asleap.";
     waitForEnter();
-
     nextScene(character, game, inTheHotelPart1);
 }
 
@@ -146,7 +148,7 @@ void inTheHotelPart1(Character& character, Game& game){
 
 }
 
-int Story::getCurrentScene(){
+int Story::getCurrentScene() const {
     return currentScene;
 }
 
@@ -170,6 +172,8 @@ void nextScene(Character& character, Game& game, std::function<void(Character&, 
     while(!choiseSucces){
         std::cin >> choise;
         if(choise == 1){
+            character.getCharactersStory().setCurrentScene(character.getCharactersStory().getCurrentScene() + 1);
+            saveGame(game.getCharacters());
             scene(character, game);
             choiseSucces = true;
         }

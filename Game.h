@@ -7,7 +7,6 @@
 using json = nlohmann::json;
 
 class Game{
-    bool isAnyCharecterCreated = false;
     std::vector<Character> charecters;
 
     public:
@@ -15,15 +14,18 @@ class Game{
         return charecters;
     }
 
-    bool getIsCharecterCreated(){
-        return isAnyCharecterCreated;
-    }
-
+    void loadCharacters();
+    void saveCharacters();
 };
 
-void saveGame();
-void loadGame();
+void saveGame(const std::vector<Character>& characters);
+std::vector<Character> loadGame();
 void outputMenu(Game& game, Character& character);
 void startGame(Game& game, Character& character);
 Character& chooseCharacter(Game& game);
 void createCharecter(Game& game);
+
+void to_json(json& j, const Story& story);
+void from_json(const json& j, Story& story);
+void to_json(json& j, const Character& character);
+void from_json(const json& j, Character& character);

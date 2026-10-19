@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Nikitos",
+        "race": "elf",
+        "story": {
+            "sceneNumber": 1
+        }
+    },
+    {
+        "name": "Barbos",
+        "race": "dwarf",
+        "story": {
+            "sceneNumber": 1
+        }
+    },
+    {
+        "name": "LinkedIn",
+        "race": "elf",
+        "story": {
+            "sceneNumber": 2
+        }
+    }
+]
