@@ -3,21 +3,21 @@
         "name": "Nikitos",
         "race": "elf",
         "story": {
-            "sceneNumber": 1
+            "sceneNumber": 3
         }
     },
     {
         "name": "Barbos",
         "race": "dwarf",
         "story": {
-            "sceneNumber": 1
+            "sceneNumber": 3
         }
     },
     {
         "name": "LinkedIn",
         "race": "elf",
         "story": {
-            "sceneNumber": 2
+            "sceneNumber": 3
         }
     }
 ]

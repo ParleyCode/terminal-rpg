@@ -1,6 +1,7 @@
 #include "Story.h"
 #include "Character.h"
 #include "Game.h"
+#include <cstdlib>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -14,6 +15,8 @@ void chooseScene(Character& character, Game& game){
         firstTimeInTown(character, game);
         case 2:
         inTheHotelPart1(character, game);
+        case 3:
+        goingToAdventurersGuild(character, game);
         
         break;
     }
@@ -145,8 +148,163 @@ void inTheHotelPart1(Character& character, Game& game){
     <<"It was even a little bit strange to see how that shy girl that a moment ago couldt even link two words, started to bombard you with questions.\n";
     waitForEnter();
     clearScreen();
-
+    nextScene(character, game, goingToAdventurersGuild);
 }
+
+void goingToAdventurersGuild(Character& character, Game& game){
+    int choise = 0;
+    clearScreen();
+    std::cin.clear();std::cin.ignore(1000, '\n');
+    std::cout << "After finishing breakfest and saying goodbye to your new friend, you headed to the local Adventurers Guild. It was not as big as"
+    <<" Great Library or University of the Wizard Union, but still looked very good. When you came closer, you`ve heard some strange noise begind the guild";
+    waitForEnter();
+    clearScreen();
+    std::cout <<"Outlaw1: Hey honey, would you like to go with us, and have some fun?))\n";
+    waitForEnter();
+    std::cout <<"Outlaw2: Yeah cutie, we won`t hurt you))\n";
+    waitForEnter();
+    std::cout <<"It was just two Ratfolk bandits importuning the girl, what will you do?\n\n1.Help the girl\n2.Ignore the scene\nChoose: ";
+    while(!(std::cin >> choise) || choise != 1 && choise != 2){
+        if(!(std::cin) || choise !=1 && choise != 2){
+            std::cout << "Incorrect input!\n";
+        }
+    }
+    if(choise == 1){
+        character.getCharactersStory().HelpedGirlNearGuild = true;
+        clearScreen();
+        std::cout << "You couldnt just stay aside when some 2 shitheaded punk annoying the inoccent girl\n";
+        waitForEnter();
+        std::cout << character.getCharacterName() << ": Hey you missery beggers, what do you want from her?";
+        waitForEnter();
+        std::cout << "Outlaw1: Does this refers to us?\n";
+        waitForEnter();
+        std::cout << character.getCharacterName() << ": I dont see other missery beggers.\n";
+        waitForEnter();
+        std::cout << "Outlaw2: Hey listen punk, maybe you dont know yet, but we have 9 lvl, we fought against many like you, so dont try to bother us, or we will teach you a lesson how to treat strange people.\n";
+        waitForEnter();
+        std::cout << character.getCharacterName() << ": Okay, okay, i just want the girl to come with me.\n";
+        waitForEnter();
+        std::cout << "Outlaw1: Oh you dont understand, okay okay.\n";
+        waitForEnter();
+        clearScreen();
+        std::cout << "One if the outlaw launched at you with a strike, luckily their levels were only 9, so you just wiped them off.\n";
+        waitForEnter();
+        std::cout << "Outlaws: Grhs! You will regret this\n";
+        waitForEnter();
+        std::cout << "Girl: Thank you, i dont even know what would happen with that 2 guys.\n";
+        waitForEnter();
+        std::cout << character.getCharacterName() << ": Oh haha dont event think about it, its already in past.\n";
+        waitForEnter();
+        std::cout << "Girl: How much i need to pay you?\n";
+        waitForEnter();
+        std::cout << character.getCharacterName() << ": Ugh dont even think about payment, lets just say i was out of blood on that two folks.\n";
+        waitForEnter();
+        std::cout << "Girl: Thank you dear kind stranger.\n";
+        waitForEnter();
+    }
+    else if(choise == 2){
+        clearScreen();
+        std::cin.clear();std::cin.ignore(10000, '\n');
+        std::cout << "Anything could happen in this big city, not everyone is protected from this robbers, so you decided to ignore the scene and jusut headed to the guild.";
+        waitForEnter();
+    }
+    clearScreen();
+    std::cout << "You came closer to the entrance of the guild, when you entered the building you saw many different races, not only elfs dwarfs humans and ratfolks, other many different creatures were there.\\n";
+    waitForEnter();
+    std::cout << "One draconid approached to you, and started conversation.\n";
+    waitForEnter();
+    std::cout << "Draconid: Oh hey there! You are novice here HA-HA-HA! Welcome to the adventurers guild HA-HA-HA!\n";
+    waitForEnter();
+    std::cout << "Firbolg: Haemir, dont scare the novice, leave him alone.\n";
+    waitForEnter();
+    std::cout << "Firbolg: Hi my name is Llorva, and its my friend Haemir, we are in one party, im the sorcerer mage.\n";
+    waitForEnter();
+    std::cout << "Haemir: And im a swordsman HA-HA-HA!\n";
+    waitForEnter();
+    std::cout << "The 2 guys seemed preety king and honest, so you tried to ask them about adventurers life.\n";
+    waitForEnter();
+    clearScreen();
+    std::cout << character.getCharacterName() << ": Hi, um, i only came to the Regarden, and i`ve never been an adventurer could you please tell me what do i need to do?\n";
+    waitForEnter();
+    std::cout << "Haemir: So you are totaly new HA-HA-HA!\n";
+    waitForEnter();
+    std::cout << "Llorva: go to the reception, and ask for adveturers card, and the guild worker will tell you more about it. Good Luck!\n";
+    waitForEnter();
+    std::cout << "Haemir: Good Luck to you novice!!! HA-HA-HA!!!\n";
+    waitForEnter();
+    clearScreen();
+    std::cout << "The laugh of draconid was heard all around the guild, you went towards the reception where nice lady met you.\n";
+    waitForEnter();
+    std::cout << "Guild worker: Welcome to the Adventurers Guild, what do you want to do?\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() << ": Hi, um, id wanted to become an adventurer! But i dont know how to do this...\n";
+    waitForEnter();
+    std::cout << "Guild worker: I understand you, so i might tell you more about adventurers\n";
+    waitForEnter();
+    std::cout << "Guild worker: First of all, when you becoming an adventurer you agreeing with rules: \n1. Every adventurer must not hurt other adventurers on the mission"
+    <<"\n2. Rewards from mission divides equaly between all members of the party" << "\n3. You must report about all dangers you meey on the way to the mission or on the way back home.\n";
+    waitForEnter();
+    std::cout << "Guild worker: Also mission separates on different levels from F- to S, level of mission says about its danger and difficulty, "
+    <<"when you just starting your adventurer career you will have level F- and the cost of the adventurers card will cost you 4 shirings\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() << "*in minds*: That`s all my money left! Damn being an adveturer not only hard and also expensive job.\n";
+    waitForEnter();
+    std::cout << "Guild worker: So, would you like to become an adventurer?\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() << ": Yeah, yea, of course, here is my money.\n";
+    waitForEnter();
+    std::cout << "Guild worker: Okay your card will be ready until tomorrow, you will be able to go on your first mission only tomorrow, and also you need to find a party, for quest F-, members must be atleast lvl 1-2.\n";
+    waitForEnter();
+    std::cout << "Guild worker: Can i get your name?\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() << ": " <<character.getCharacterName()<<" Sylvares.";
+    waitForEnter();
+    clearScreen();
+    std::cout << "After saying goodbye to almost all your money you got your adventurers card. Thats cool of course but now you dont have any money to even eat some food.\n";
+    waitForEnter();
+    std::cout << "Llorva: And? Hows it?\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() <<": Im the Adventurer now! But i dont have any money left...\n";
+    waitForEnter();
+    std::cout << "Haemir: HA-HA-HA! Its not problem at all, lets go with us, we will greet you at our big adventurers family, HA-HA-HA!\n";
+    waitForEnter();
+    std::cout << "Llorva: Hehe its true, lets go we will show you the most delicious dishes in all Regarden!\n";
+    waitForEnter();
+    clearScreen();
+    if(character.getCharactersStory().HelpedGirlNearGuild == true){
+        std::cout << "???: wait dear stranger.\n";
+        waitForEnter();
+        std::cout << "It was that girl from the backyard of the guild.\n";
+        waitForEnter();
+        std::cout << "???: i was thinking how i could pay you off for helping me, i can go on your first mission with you, im really strong, i wont interfere you, i am a healer mage 15lvl.\n";
+        waitForEnter();
+        std::cout << "Llarva: oh i totaly forget that you need a party for your first mission, we will come with Haemir to help you.\n";
+        waitForEnter();
+        std::cout << "Haemir: Ye thats right HA-HA-HA! We can go on quest level B HA-HA-HA! With our 14lvl\n";
+        waitForEnter();
+        std::cout << character.getCharacterName() << ": thats great! Thank you all! And one little awkward question, whats your name?\n";
+        waitForEnter();
+        std::cout << "???: Hehe, i totaly forget to introduce myself, im Soliana Keygella, healer and support mage lvl 15, im not strong in fights, but im very good in supporting from behind!\n";
+        waitForEnter();
+        std::cout << "Llarva: Oh " << character.getCharacterName() << " by the way, what role you are specificated at?\n";
+        waitForEnter();
+        std::cout << character.getCharacterName() << ": Heh i dont know for sure, i can use magic, sword and holy magic\n";
+        waitForEnter();
+        std::cout << "Soliana: You can use all 3 types?! I`ve heard that only about 0.2 percent in the all adventurers family could use all 3 types of spells\n";
+        waitForEnter();
+        std::cout << "Haemir: Ha-HA-HA! Our mission is gonna be interesting.\n";
+    }
+    else if(character.getCharactersStory().HelpedGirlNearGuild == false){
+        std::cout << character.getCharacterName() << ": Guys, im sorry to bother you, but i need a party for my first quest, would you mind to come with me?\n";
+        waitForEnter();
+        std::cout << "Llarva: Of course, i guess with our level we can go on mission C-";
+        waitForEnter();
+        std::cout << character.getCharacterName() << ": Thank you so much";
+        waitForEnter();
+    }
+}
+
+
 
 int Story::getCurrentScene() const {
     return currentScene;

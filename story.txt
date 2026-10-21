@@ -1,0 +1,15 @@
+----STORY-----
+
+1.firstTimeInTown
+
+2.inTheHotelPart1
+
+------Lore Of The story------
+You came to the town Regarden, walked around town and stayed in the local hotel, there you met shy girl Amanda who was student in the University of the Mage Union, and also studied from your aunt. Then you came to the Adventurers guild where you met Haamir and Llarva (and if you helped the girl Soliana) your future party for missions.
+
+------Names-------
+1.Chlorinde Sylvares: your aunt who works in the Great Library
+2.Amanda: the shy girl you met in the hotel, she is a student of your aunt.
+3.Haemir: Big draconid lvl 14, swordsman, with loud voice and loud laugh.
+4.Llarva: Firbolg lvl 13, sorcerer mage, kind and wise woman, who follows Haemir.
+5.Soliana: Human lvl 15, healer support mage, bright and smily girl, who was attacked by ratfolks and if you saved her she will go with your party.
