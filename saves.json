@@ -3,6 +3,7 @@
         "name": "Nikitos",
         "race": "elf",
         "story": {
+            "helpedGirlNearGuild": false,
             "sceneNumber": 3
         }
     },
@@ -10,14 +11,16 @@
         "name": "Barbos",
         "race": "dwarf",
         "story": {
-            "sceneNumber": 3
+            "helpedGirlNearGuild": true,
+            "sceneNumber": 4
         }
     },
     {
         "name": "LinkedIn",
         "race": "elf",
         "story": {
-            "sceneNumber": 3
+            "helpedGirlNearGuild": false,
+            "sceneNumber": 4
         }
     }
 ]

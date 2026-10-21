@@ -161,6 +161,7 @@ void outputMenu(Game& game, Character& character){
         startGame(game, character);
         break;
     case 2:  
+        meetinAuntWithAmanda(character, game);
         break;
     case 3:
         createCharecter(game);
@@ -172,7 +173,8 @@ void outputMenu(Game& game, Character& character){
 
 void to_json(json& j, const Story& story){
     j = json{
-        {"sceneNumber", story.getCurrentScene()}
+        {"sceneNumber", story.getCurrentScene()},
+        {"helpedGirlNearGuild", story.HelpedGirlNearGuild}
     };
 
 }

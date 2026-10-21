@@ -6,19 +6,25 @@
 #include <ostream>
 #include <string>
 #include <functional>
+#include <type_traits>
+#include <valarray>
 
 
 
 void chooseScene(Character& character, Game& game){
     switch(character.getCharactersStory().getCurrentScene()){
         case 1:
-        firstTimeInTown(character, game);
+            firstTimeInTown(character, game);
+            break;
         case 2:
-        inTheHotelPart1(character, game);
+            inTheHotelPart1(character, game);
+            break;
         case 3:
-        goingToAdventurersGuild(character, game);
-        
-        break;
+            goingToAdventurersGuild(character, game);
+            break;
+        case 4:
+            meetinAuntWithAmanda(character, game);
+            break;
     }
 
 }
@@ -280,7 +286,7 @@ void goingToAdventurersGuild(Character& character, Game& game){
         waitForEnter();
         std::cout << "Llarva: oh i totaly forget that you need a party for your first mission, we will come with Haemir to help you.\n";
         waitForEnter();
-        std::cout << "Haemir: Ye thats right HA-HA-HA! We can go on quest level B HA-HA-HA! With our 14lvl\n";
+        std::cout << "Haemir: Ye thats right HA-HA-HA! We can go on quest level B+ HA-HA-HA! With our 14lvl\n";
         waitForEnter();
         std::cout << character.getCharacterName() << ": thats great! Thank you all! And one little awkward question, whats your name?\n";
         waitForEnter();
@@ -302,9 +308,140 @@ void goingToAdventurersGuild(Character& character, Game& game){
         std::cout << character.getCharacterName() << ": Thank you so much";
         waitForEnter();
     }
+    nextScene(character, game, meetinAuntWithAmanda);
 }
 
+void meetinAuntWithAmanda(Character &character, Game &game){
+    clearScreen();
+    std::cout << "After meeting your new friends, you headed to the main entrance of the Great Library, to meet Amanda.\n";
+    waitForEnter();
+    std::cout << "While you walking to the appointment, you suddenly realized that town was really quite and calm, the pace\n"
+    <<"of people around was slow, in this atmosphere you feel really warm inside, and after a moment you saw acquainted silhouette.";
+    waitForEnter();
+    clearScreen();
+    std::cout << "Amanda: Hey! "<<character.getCharacterName()<< "! Im here!\n";
+    waitForEnter();
+    std::cout << "You saw, girl filled with energy running and waving towards you.\n";
+    waitForEnter();
+    std::cout << "Amanda: Fewh, it was pretty hard day in university.\n";
+    waitForEnter();
+    std::cout << character.getCharacterName()<<": what`s so about it?\n";
+    waitForEnter();
+    std::cout << "Amanda: I`ve needed to brew potion of endurance on the first lesson, on the second we were casting fire spells almost for an hour\n "
+    <<"and on the third lesson we were passing the test about monster knowlege.\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() <<": well, heh maybe you dont like the subjects, but one time they can save your life.\n";
+    waitForEnter();
+    std::cout << "Amanda: Ugh, you say as our teachers, lets better head to mrs Chlorinde, come with me\n";
+    waitForEnter();
+    clearScreen();
+    std::cout << "You entered the rial GIANT library, as some legends says that here you can find answer on any question that you will\n"
+    <<" ever have in your mind.\n";
+    waitForEnter();
+    std::cout << "With Amanda you were walking past giant shelfs densely-packed with books of different categories.\n";
+    waitForEnter();
+    std::cout << "Amanda: mrs Chlorinde its me!!!\n";
+    waitForEnter();
+    std::cout << "Lady dressed in a glorious cosmic robe, turned around.\n";
+    waitForEnter();
+    std::cout << "It was an elf lady, who had earrings in form of globes, and necklace that looked like magic levitating cube inside of round frame\n";
+    waitForEnter();
+    std::cout << "Chlorinde: Hi Amanda, how your learning day today? And who is this graceful man with you?\n";
+    waitForEnter();
+    std::cout << "Chlorinde: Wait a minute... Cuite? Is that really you!?\n";
+    waitForEnter();
+    std::cout << character.getCharacterName()<<": Haha, long time no see auntie.\n";
+    waitForEnter();
+    std::cout << "Chlorinde: Oh my.. After trainings you really became strong mage, i see mana is boiling inside of you.\n";
+    waitForEnter();
+    std::cout << "Chlorinde: You are became much stronger after our last meet.\n";
+    waitForEnter();
+    std::cout << "Past five years you were training with yours aunts good friends Vorthan, the undefeated king of sword, training with him\n"
+    <<"was trully hell on earth.\n";
+    waitForEnter();
+    std::cout << "Lysara, Queen of Magic, the greatest mage of all times, she created many spells that became forbidden, because using them\n"
+    <<"can lead to enormous destructions.\n";
+    waitForEnter();
+    std::cout << "Auriella, Goddes Flower, the greates healer of the whole world, as legends says she can even revive undeads, also she specificating\n"
+    <<"in support magic, so that her teammates could not even get injuried.\n";
+    waitForEnter();
+    std::cout << "With your aunt they formed strongest team Erebrus, still there is still no threat that could`ve stopped this team, and to make\n "
+    <<"you stronger, your aunt asked them to train you, so you could become strong enough to keep the world safe, of threats that could not be stopped\n"
+    <<"by Erebrus.\n";
+    waitForEnter();
+    std::cout << "Amanda: wait wait wait, EREBRUS!? YOU WERE TRAINED BY EREBRUS!?\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() << ": Hehe, i guess so....\n";
+    waitForEnter();
+    std::cout << "Chlorinde: Let`s come to my office, we can have a little cup of coffe and have a little chat.\n";
+    waitForEnter();
+    clearScreen();
+    std::cout << "You followed Chlorinde to her room, something strange were in that room, windows in the room did not showed street views\n"
+    <<"it showed space with planets?...\n";
+    waitForEnter();
+    std::cout << "Chlorinde: You can have a sit, i`ll make us something to drink.\n";
+    waitForEnter();
+    std::cout << "You speaked for about an hour about your trainings, Chlorinde and Amanda told you hows life in the town looks like and who are adventurers\n";
+    waitForEnter();
+    std::cout << "Chlorinde: so you finally became and adventurer? Congrats! As i remember it was your biggest wish\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() <<": Yeah! I even found a party for my mission!\n";
+    waitForEnter();
+    if(character.getCharactersStory().HelpedGirlNearGuild == true){
+        std::cout << character.getCharacterName() << ": Draconid swordsman Haemir, Firbolg mage Llarva, and healer Soliana.\n";
+    }
+    else if (character.getCharactersStory().HelpedGirlNearGuild == false) {
+        std::cout << character.getCharacterName() << ": Draconid swordsman Haemir, and Firbolg mage Llarva.\n";
+    }
+    waitForEnter();
+    std::cout << "Chlorinde: thats good, i wish you luck on your first mission, by the way what level is it gonna be?\n";
+    waitForEnter();
+    if(character.getCharactersStory().HelpedGirlNearGuild == true){
+        std::cout << character.getCharacterName() << ": My teammates said that we could go on B+ mission.\n";
+    }
+    else if (character.getCharactersStory().HelpedGirlNearGuild == false) {
+        std::cout << character.getCharacterName() << ": My teammates said that we could go on C- mission\n";
+    }
+    waitForEnter();
+    std::cout << "Chlorinde: Its nice, luckily you want do some job as saving some stray kitten on tier F- haha\n";
+    waitForEnter();
+    std::cout << "Chlorinde: " << character.getCharacterName() << " can you please clear up the table please?\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() <<": yea, of course\n";
+    waitForEnter();
+    std::cout << "While you were clearing the table and washing dishes you could not hear what girls where talking about.\n";
+    waitForEnter();
+    std::cout << "Chlorinde: Hey Amanda, i know its hard to understand but please dont tell him about his level or ask him.\n";
+    waitForEnter();
+    std::cout << "Amanda: umh, well i understand that he was training by Erebrus, but he can check his level by himself no?\n";
+    waitForEnter();
+    std::cout << "Chlorinde: to be honest, we blocked him this ability, i need you to protect him of knowing his level, and becoming selfish and greedy.\n";
+    waitForEnter();
+    std::cout << "Amanda: haha, of course, but what must his level of he could become greedy or selfish";
+    waitForEnter();
+    std::cout << "Chlorinde: Fewh, please dont say anything weird, but now his level is around 849.\n";
+    waitForEnter();
+    std::cout << "Amanda:(silently screaming) WHAT!? 849!? BUT ISNT THE HIGHEST LEVEL IN THE WORLD IS 87!?\n";
+    waitForEnter();
+    std::cout << "Chlorinde: For the missions that showed in the guild, truly level 90 will be enough, but there is much more dangers in our world.\n";
+    waitForEnter();
+    std::cout << "Chlorinde: so you must understand now why do i want to protect him, now he is using only around 0.01 percent of his powers, so he need good companions for now.\n";
+    waitForEnter();
+    std::cout << "Chlorinde: when he will understand his power, we will give him ability to control whole his strenght.\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() << ": Im finished, it was very fun time auntie and Amanda, but i need go prepare to my tomorrows mission.\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() << ": Bye auntie, bye Amanda, i hope will meet like this again soon.\n";
+    waitForEnter();
+    std::cout << "Girls: Goodbye, we wish you luck on mission!\n";
+    waitForEnter();
+    std::cout << "You leaved the Great Library and headed to the hotel in expectations for tomorrow.\n";
+    nextScene(character, game, gettingReadyForMission);
+}
+void gettingReadyForMission(Character& character, Game &game){
+    clearScreen();
 
+}
 
 int Story::getCurrentScene() const {
     return currentScene;
@@ -336,8 +473,8 @@ void nextScene(Character& character, Game& game, std::function<void(Character&, 
             choiseSucces = true;
         }
         else if(choise == 2){
-            choiseSucces = true;
-            //Skip
+            saveGame(game.getCharacters());
+            choiseSucces = true;        
         }
         else{
             std::cout << "Wrong input!";

@@ -24,6 +24,7 @@ void clearScreen();
 void firstTimeInTown(Character& character, Game& game);
 void inTheHotelPart1(Character& character, Game& game);
 void goingToAdventurersGuild(Character& character, Game& game);
+void meetinAuntWithAmanda(Character& character, Game& game);
 void gettingReadyForMission(Character& character, Game& game);
 void chooseScene(Character& character, Game& game);
 void nextScene(Character& character, Game& game, std::function<void(Character&, Game&)> scene);

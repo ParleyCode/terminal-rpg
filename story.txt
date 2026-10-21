@@ -4,6 +4,10 @@
 
 2.inTheHotelPart1
 
+3.goingToAdventurersGuild
+
+4.meetinAuntWithAmanda
+
 ------Lore Of The story------
 You came to the town Regarden, walked around town and stayed in the local hotel, there you met shy girl Amanda who was student in the University of the Mage Union, and also studied from your aunt. Then you came to the Adventurers guild where you met Haamir and Llarva (and if you helped the girl Soliana) your future party for missions.
 
@@ -13,3 +17,6 @@ You came to the town Regarden, walked around town and stayed in the local hotel,
 3.Haemir: Big draconid lvl 14, swordsman, with loud voice and loud laugh.
 4.Llarva: Firbolg lvl 13, sorcerer mage, kind and wise woman, who follows Haemir.
 5.Soliana: Human lvl 15, healer support mage, bright and smily girl, who was attacked by ratfolks and if you saved her she will go with your party.
+6.Lysara, Queen of Magic, the greatest mage of all times, she created many spells that became forbidden, because using them can lead to enormous destructions.
+7.Auriella, Goddes Flower, the greates healer of the whole world, as legends says shecan even revive undeads, also she specificating in support magic, so that her teammates could not even get injuried.
+8.Vorthan, the undefeated king of sword, training with him was trully hell on earth.
