@@ -29,8 +29,6 @@ void chooseScene(Character& character, Game& game){
 
 }
 void firstTimeInTown(Character& character, Game& game){
-    int storyNumber = 2;
-    std::cin.clear();std::cin.ignore(10000,'\n');
     clearScreen();
     std::cout << "===============GAME INFO===============\n\nTo continue dialogs you can press ENTER.(Try it)";
     std::cin.get();
@@ -215,7 +213,7 @@ void goingToAdventurersGuild(Character& character, Game& game){
         waitForEnter();
     }
     clearScreen();
-    std::cout << "You came closer to the entrance of the guild, when you entered the building you saw many different races, not only elfs dwarfs humans and ratfolks, other many different creatures were there.\\n";
+    std::cout << "You came closer to the entrance of the guild, when you entered the building you saw many different races, not only elfs dwarfs humans and ratfolks, other many different creatures were there.\n";
     waitForEnter();
     std::cout << "One draconid approached to you, and started conversation.\n";
     waitForEnter();

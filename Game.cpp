@@ -50,7 +50,7 @@ void Game::saveCharacters(){
     Function to check if any character was created, if no ask to create a new one, if yes show list to choose the slot
 
 */
-void startGame(Game& game, Character& character){
+void continueGame(Game& game, Character& character){
 
     int choise = 0;
     std::string createCharecterChoise;
@@ -64,7 +64,7 @@ void startGame(Game& game, Character& character){
         std::getline(std::cin, createCharecterChoise);
         if(createCharecterChoise == "y"){
             createCharecterSucces = true;
-            createCharecter(game);
+            createCharecter(game, character);
             break;
         }
         if(createCharecterChoise == "n"){
@@ -78,9 +78,10 @@ void startGame(Game& game, Character& character){
     }
 }
     else{
-            Character& chosenCharacter = chooseCharacter(game);
+        Character& chosenCharacter = chooseCharacter(game);
         chooseScene(chosenCharacter, game);
     }
+
 }
 
 /*
@@ -88,12 +89,11 @@ void startGame(Game& game, Character& character){
     Function to create new character to the vector list of characters/save_slots
 
 */
-void createCharecter(Game& game){
-    Character character;
+void createCharecter(Game& game, Character& character){
+    if(game.getCharacters().size() < 5){
     std::string name;
     std::string race;
     bool raceSucces = false;
-    std::cin.clear();std::cin.ignore(10000, '\n');
     std::cout << "Please enter name for your character: ";
     std::getline(std::cin, name);
 
@@ -114,7 +114,15 @@ void createCharecter(Game& game){
 
     game.getCharacters().push_back(character);
     saveGame(game.getCharacters());
+    }
+    else{
+        clearScreen();
+        std::cin.clear();
+        std::cout << "You`ve already on max slots :(";
+        waitForEnter();
+    }
 }
+
 
 Character& chooseCharacter(Game& game){
     int choise = 0;
@@ -123,9 +131,9 @@ Character& chooseCharacter(Game& game){
     std::cout << "Please choose your character:\n";
     for(auto& chr : game.getCharacters()){
         ++counter;
-        std::cout << counter <<". \t"<<chr.getCharacterName()<<"\t"<<chr.getCharacterRace() << "\n";
+        std::cout << counter <<". \t"<<chr.getCharacterName()<<"\t\t"<<chr.getCharacterRace() << "\n";
     }
-    std::cout << "Please selectd character: \n";
+    std::cout << "Please selectd character: ";
     while(!(std::cin >> choise) || choise < 0 || choise > game.getCharacters().size()){
         if(!(std::cin) || choise < 0 || choise > game.getCharacters().size()){
             std::cout << "Wrong input!";
@@ -136,6 +144,47 @@ Character& chooseCharacter(Game& game){
     return game.getCharacters()[choise - 1];
 }
 
+void deleteCharacter(Game &game){
+    int choise = 0;
+    int counter = 0;
+
+    if(game.getCharacters().empty()){
+        std::cout << "The character list is empty :(";
+    }
+    else{
+    std::cout << "Please choose character to delete: \n";
+    for(auto& chr : game.getCharacters()){
+        ++counter;
+        std::cout << counter <<". \t"<<chr.getCharacterName()<<"\t"<<chr.getCharacterRace() << "\n";
+    }
+    std::cout << "\nPlease select character: ";
+    while(!(std::cin >> choise) || choise < 0 || choise > game.getCharacters().size()){
+        if(!(std::cin) || choise < 0 || choise > game.getCharacters().size()){
+            std::cout << "Wrong input!";
+            std::cin.clear();std::cin.ignore(10000, '\n');
+            continue;
+        }    
+    }
+
+    game.getCharacters().erase(game.getCharacters().begin() + (choise - 1));
+    saveGame(game.getCharacters());
+}
+
+}
+
+void startNewGame(Game &game, Character &character){
+    std::cin.clear();std::cin.ignore(100,'\n');
+    clearScreen();
+    if(game.getCharacters().size() < 5){
+        createCharecter(game, character);
+        chooseScene(character, game);
+    }
+    else{
+        std::cout << "You`ve already have max slots :(";
+        waitForEnter();
+    }
+}
+
 void outputMenu(Game& game, Character& character){
     int choise = 0;
     while(true){
@@ -144,7 +193,8 @@ void outputMenu(Game& game, Character& character){
     <<"1. Start new game \n"
     <<"2. Continue \n"
     <<"3. Create new charecter \n"
-    <<"4. Quit the game\n";
+    <<"4. Delete character\n"
+    <<"5. Quit the game\n";
 
     std::cout << "\nPlease enter what you want to do: ";
     while(!(std::cin >> choise) || choise < 1 && choise > 4){
@@ -158,15 +208,21 @@ void outputMenu(Game& game, Character& character){
 
     switch(choise){
     case 1:
-        startGame(game, character);
+        startNewGame(game, character);
         break;
     case 2:  
-        meetinAuntWithAmanda(character, game);
+        continueGame(game, character);
         break;
     case 3:
-        createCharecter(game);
+        std::cin.clear();std::cin.ignore(1000, '\n');
+        createCharecter(game, character);
         break;
-
+    case 4:
+        deleteCharacter(game);
+        break;
+    case 5:
+        saveGame(game.getCharacters());
+        exit(0);
     }
     }
 }

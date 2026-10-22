@@ -21,9 +21,11 @@ class Game{
 void saveGame(const std::vector<Character>& characters);
 std::vector<Character> loadGame();
 void outputMenu(Game& game, Character& character);
-void startGame(Game& game, Character& character);
+void startNewGame(Game& game, Character& character);
+void continueGame(Game& game, Character& character);
 Character& chooseCharacter(Game& game);
-void createCharecter(Game& game);
+void createCharecter(Game& game, Character& character);
+void deleteCharacter(Game& game);
 
 void to_json(json& j, const Story& story);
 void from_json(const json& j, Story& story);
