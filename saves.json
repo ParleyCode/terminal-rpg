@@ -1,41 +1,19 @@
 [
     {
-        "name": "Anton",
-        "race": "human",
-        "story": {
-            "helpedGirlNearGuild": false,
-            "sceneNumber": 1
-        }
-    },
-    {
-        "name": "test1",
-        "race": "human",
-        "story": {
-            "helpedGirlNearGuild": false,
-            "sceneNumber": 1
-        }
-    },
-    {
-        "name": "test2",
-        "race": "dwarf",
-        "story": {
-            "helpedGirlNearGuild": true,
-            "sceneNumber": 3
-        }
-    },
-    {
-        "name": "test3",
+        "name": "Nikitos",
         "race": "elf",
         "story": {
-            "helpedGirlNearGuild": false,
-            "sceneNumber": 1
+            "helpedGirlNearGuild": true,
+            "partyName": "Veil and Steel",
+            "sceneNumber": 6
         }
     },
     {
-        "name": "test4",
+        "name": "Barbos",
         "race": "human",
         "story": {
             "helpedGirlNearGuild": false,
+            "partyName": "",
             "sceneNumber": 1
         }
     }

@@ -2,6 +2,7 @@
 #include "Character.h"
 #include "Story.h"
 #include <fstream>
+#include <string>
 #include <vector>
 
 /*
@@ -230,13 +231,16 @@ void outputMenu(Game& game, Character& character){
 void to_json(json& j, const Story& story){
     j = json{
         {"sceneNumber", story.getCurrentScene()},
-        {"helpedGirlNearGuild", story.HelpedGirlNearGuild}
+        {"helpedGirlNearGuild", story.HelpedGirlNearGuild},
+        {"partyName", story.partyName}
     };
 
 }
 
 void from_json(const json& j, Story& story){
-    story.setCurrentScene(j.at("sceneNumber").get<int>());
+    story.setCurrentScene(j.at("sceneNumber").get<int>()),
+    story.HelpedGirlNearGuild = j.at("helpedGirlNearGuild").get<bool>(),
+    story.partyName = j.at("partyName").get<std::string>();
 }
 
 void to_json(json& j, const Character& character){

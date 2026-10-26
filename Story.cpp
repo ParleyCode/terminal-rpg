@@ -25,6 +25,16 @@ void chooseScene(Character& character, Game& game){
         case 4:
             meetinAuntWithAmanda(character, game);
             break;
+        case 5:
+            gettingReadyForMission(character, game);
+            break;
+        case 6:
+            if(character.getCharactersStory().HelpedGirlNearGuild == true){
+                missionWithSoliana(character, game);
+            }
+            else if(character.getCharactersStory().HelpedGirlNearGuild == false){
+                missionWithoutSoliana(character, game);
+            }
     }
 
 }
@@ -175,6 +185,7 @@ void goingToAdventurersGuild(Character& character, Game& game){
     }
     if(choise == 1){
         character.getCharactersStory().HelpedGirlNearGuild = true;
+        saveGame(game.getCharacters());
         clearScreen();
         std::cout << "You couldnt just stay aside when some 2 shitheaded punk annoying the inoccent girl\n";
         waitForEnter();
@@ -438,8 +449,105 @@ void meetinAuntWithAmanda(Character &character, Game &game){
 }
 void gettingReadyForMission(Character& character, Game &game){
     clearScreen();
+    std::cout << "\n\n\n\n\t\t\t\t|-----------|\n"
+              << "\t\t\t\t|   DAY 3   |\n"
+              << "\t\t\t\t|-----------|";
+    waitForEnter();
+    clearScreen();
+    std::cout << "New day, and this is the DAY you are goind on your first mission as an adventurer. Whole night you nervous\n"
+    <<"because it was your first mission, and also beeing proud of yourself, your biggest dream and goal becomming real.\n";
+    waitForEnter();
+    std::cout << "So you packed all your stuff to your bag, and left the room, you met Amanda in the corridor, she wished you\n"
+    <<"luck on your first mission and blessed you with regeneration spell.\n";
+    waitForEnter();
+    std::cout << "Town in the morning was as usual, quite and calm, pubs and caffees started to open, students were going to schools\n"
+    <<"students to the Mage Union university, things were just the way they should be.\n";
+    waitForEnter();
+    std::cout << "When you got closer to the adventurers guild hall, the atmosphere changed, many adventurers were heading on their\n"
+    <<"missions, the table with task were crowded around with adventurers choosing their next mission.\n";
+    waitForEnter();
+    if(character.getCharactersStory().HelpedGirlNearGuild == true){
+        std::cout << "You saw your teammates, who will fight with you back to back, Llarva, Haemir, Soliana\n";
+        nextScene(character, game, missionWithSoliana);
+    }
+    else if (character.getCharactersStory().HelpedGirlNearGuild == false) {
+        std::cout << "You saw your teammates, who will fight with you back to back, Llarva and Haemir\n";
+        nextScene(character, game, missionWithoutSoliana);
+    }
+}
+
+void missionWithSoliana(Character &character, Game &game){
+    int choise = 0;
+    clearScreen();
+    std::cout << character.getCharacterName() << ": Hi guys! Ready for the mission?\n";
+    waitForEnter();
+    std::cout << "Haemir: I see you are full of enthusiasm, HA-HA-HA\n";
+    waitForEnter();
+    std::cout << "Llarva: yeah, good morning to you " << character.getCharacterName() << " , you slept well? We will need lots of strenght.\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() << ": I slept well, i guess... But im full of energy, i can beat even a dragon!\n";
+    waitForEnter();
+    std::cout << "Soliana: thats good, battle spirit is half of the completed mission.\n";
+    waitForEnter();
+    std::cout << "Haemir: If we are all ready, lets go, HA-HA-HA!\n";
+    waitForEnter();
+    std::cout << "Soliana: uhgm-m... maybe i will seem silly but... shouldn`t our team get a name??\n";
+    waitForEnter();
+    std::cout << "You and Haemir: HA-HA-HA-HA!\n";
+    waitForEnter();
+    std::cout << "Soliana *embarrassed*: nevermind, forget what i said!\n";
+    waitForEnter();
+    std::cout << character.getCharacterName() << ": No-no-no, i think thats a really good idea, how should we name our team?\n";
+    waitForEnter();
+    std::cout << "Soliana: Veil and Steel?\n";
+    waitForEnter();
+    std::cout << "Haemir: Naaah, it should be Avangard of the Abyss.\n";
+    waitForEnter();
+    std::cout << "Llarva: id like it to be, Shroud and Aegis\n";
+    waitForEnter();
+    std::cout << "Soliana: your mission, you need to choose " << character.getCharacterName() << "\n";
+    waitForEnter();
+    std::cout << "How shoul we name our party?:\n1. Veil and Steel\n2. Avangard of the Abyss.\n3. Shround and Aegis ";
+    while (!(std::cin >> choise) || choise != 1 && choise != 2 && choise != 3) {
+        if(!(std::cin) || choise != 1 && choise != 2 && choise != 3){
+            std::cout << "Incorrect input!";
+            std::cin.clear();std::cin.ignore(10000, '\n');
+        }
+    }
+
+    if(choise == 1){
+        character.getCharactersStory().partyName = "Veil and Steel";
+        saveGame(game.getCharacters());
+        std::cout<<character.getCharacterName()<<": I think it should be Veil and Steel.\n";
+        waitForEnter();
+        std::cout<<"Soliana: yeah its a good choise\n";;
+        waitForEnter();
+    }
+    else if(choise == 2){
+        character.getCharactersStory().partyName = "Avanguards of the Abyss";
+        saveGame(game.getCharacters());
+        std::cout<<character.getCharacterName()<<": I think Avanguards of the Abyss will suit us.\n";
+        waitForEnter();
+        std::cout<<"Haemir: HA-HA-HA! WITH THAT NAME WE WILL DESTROY EVERYONE\n";
+        waitForEnter();
+    }
+    else if(choise == 3){
+        character.getCharactersStory().partyName = "Shroud and Aegis";
+        saveGame(game.getCharacters());
+        std::cout<<character.getCharacterName()<<": I think Shroud and Aegis describes us perfectly.\n";
+        waitForEnter();
+        std::cout<<"Llarva: mhm, you chose the right one ;)\n";
+        waitForEnter();
+    }
+    clearScreen();
+    std::cout << "";
 
 }
+
+void missionWithoutSoliana(Character &character, Game &game){
+    clearScreen();
+}
+
 
 int Story::getCurrentScene() const {
     return currentScene;
